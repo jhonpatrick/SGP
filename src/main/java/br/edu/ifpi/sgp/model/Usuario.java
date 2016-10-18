@@ -1,4 +1,4 @@
-package br.edu.ifpi.sgp.model.entity;
+package br.edu.ifpi.sgp.model;
 
 import java.io.Serializable;
 

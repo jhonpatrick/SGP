@@ -2,7 +2,7 @@ package br.edu.ifpi.sgp.dao;
 
 import java.util.List;
 
-import br.edu.ifpi.sgp.model.entity.Usuario;
+import br.edu.ifpi.sgp.model.Usuario;
 
 public interface UsuarioDAO {
 	

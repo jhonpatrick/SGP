@@ -7,7 +7,7 @@ package br.edu.ifpi.sgp.bean;
 
 import br.edu.ifpi.sgp.dao.UsuarioDAO;
 import br.edu.ifpi.sgp.dao.UsuarioDAOImpl;
-import br.edu.ifpi.sgp.model.entity.Usuario;
+import br.edu.ifpi.sgp.model.Usuario;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;

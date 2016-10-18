@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import br.edu.ifpi.sgp.model.entity.Usuario;
+import br.edu.ifpi.sgp.model.Usuario;
 
 /**
  * @author Patrick
