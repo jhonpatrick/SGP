@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template/layout.xhtml">
+        <ui:define name="content">
+            <p:growl id="msgs" showDetail="true" />
+            <p:tabView>
+                <p:tab title="Meu Perfil">
+                    <!-- Conteudo -->
+                    <h:form>
+                        <h2>Coodernação De Disciplina</h2>
+                        <p:outputLabel value="Nome: " />
+                        <p:inputText value="#{usuarioBean.nome}"
+                                     requiredMessage="Informe o seu email" required="true" />
+                        <br />
+                        <br />
+                        <p:outputLabel value="Login: " />
+                        <p:inputText value="#{usuarioBean.email}"
+                                     requiredMessage="Informe o seu email" required="true" />
+                        <br />
+                        <br />
+                        <p:outputLabel value="Senha: " />
+                        <p:inputText value="#{usuarioBean.siape}"
+                                     requiredMessage="Informe o seu email" required="true" />
+                        <br />
+                        <br />
+                        <p:commandButton value="Salvar alterações" icon="ui-icon-star"
+                                         action="#{usuarioBean.editarUsuario}" ajax="false" />
+                        <p:commandButton value="Cancelar" icon="ui-icon-star" ajax="false" />
+                    </h:form>
+                </p:tab>
+                <p:tab title="Sala de Cadastros">
+                    <!-- Conteudo -->
+                    <h:outputLink value="cadastrarUsuario.xhtml">
+                        <h:outputText value="Cadastrar Novo Usuário" />
+                    </h:outputLink>
+                    <br />
+                    <br />
+                    <h:outputLink value="cadastrarEquipamento.xhtml">
+                        <h:outputText value="Cadastrar Novo Equipamento" />
+                    </h:outputLink>
+                </p:tab>
+                <p:tab title="Sala de Equipamento">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <!-- Conteudo -->
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Sala de Horários">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <!-- Conteudo -->
+                    </h:panelGrid>
+                </p:tab>
+            </p:tabView>
+        </ui:define>
+    </ui:composition>
+</html>
