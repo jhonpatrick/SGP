@@ -7,7 +7,7 @@ package br.edu.ifpi.sgp.bean;
 
 import br.edu.ifpi.sgp.dao.UsuarioDAO;
 import br.edu.ifpi.sgp.dao.UsuarioDAOImpl;
-import br.edu.ifpi.sgp.model.entity.Usuario;
+import br.edu.ifpi.sgp.model.Usuario;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -23,15 +23,7 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class UsuarioBean implements Serializable {
 
-    /**
-     * Creates a new instance of UsuarioBean
-     */
-    public UsuarioBean() {
-    }
-
-    private static final long serialVersionUID = 1L;
-
-    private String email, siape, nome;
+    private String email, nome, senha;
     private UsuarioDAO usuarioDAOImpl = new UsuarioDAOImpl();
     private Usuario usuario;
 
@@ -43,14 +35,14 @@ public class UsuarioBean implements Serializable {
     // metodos
     public String adicionarUsuario() {
         try {
-            if (getEmail().isEmpty() || getSiape().isEmpty()) {
+            if (getEmail().isEmpty() || getSenha().isEmpty()) {
                 FacesContext.getCurrentInstance().addMessage("usuarioForm",
                         new FacesMessage(FacesMessage.SEVERITY_INFO, "Campos Inválidos", ""));
             } else {
                 Usuario usuario = new Usuario();
                 usuario.setNome(getNome());
                 usuario.setEmail(getEmail());
-                usuario.setSiape(getSiape());
+                usuario.setSenha(getSenha());
                 usuario.setStatus(true);
                 // bucar por Siape antes de cadastrar novo
                 this.usuarioDAOImpl.adicionarUsuario(usuario);
@@ -60,50 +52,40 @@ public class UsuarioBean implements Serializable {
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage("usuarioForm",
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Erro ao cadastrar usuario", e.getMessage()));
-        } finally {
-            return "cadastrarUsuario";
         }
+        return "cadastrarUsuario";
     }
 
     /**
      * Método faz login do usuário
+     *
+     * @return
      */
     public String fazerLogin() {
         try {
-            // verificando se é o primero usuario
-            // verifica qnt de usuario do sistema, caso não tenha, é criado um
-            // aqui com dados da session
-            Long count = usuarioDAOImpl.contador(); // retorna o numero de
-            // linhas da coluna
-            if (count == 0) {
-                adicionarUsuario();
+            // busnca usuario no banco
+            usuario = usuarioDAOImpl.buscarUsuarioNomeSenha(getEmail(), getSenha());
+            if (usuario != null) {
                 FacesContext.getCurrentInstance().addMessage("usuarioForm",
                         new FacesMessage(FacesMessage.SEVERITY_INFO, "Login com sucesso!", ""));
                 return "paginaPrincipal";
-            } else if (count > 0) {
-                usuario = usuarioDAOImpl.buscarUsuarioNomeSenha(getEmail(), getSiape());
-                if (usuario == null) {
-                    FacesContext.getCurrentInstance().addMessage("usuarioForm",
-                            new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuário não encontrado!", "Login Inválido"));
-                    return null;
-                } else {
-                    FacesContext.getCurrentInstance().addMessage("usuarioForm",
-                            new FacesMessage(FacesMessage.SEVERITY_INFO, "Login com sucesso!", ""));
-                    return "paginaPrincipal";
-                }
             } else {
-                return null;
+                FacesContext.getCurrentInstance().addMessage("usuarioForm",
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuário não encontrado!", "Tente novamente!"));
+                return "index";
             }
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage("usuarioForm",
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuário não encontrado!", e.toString()));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuário não encontrado!", "Login Inválido"));
             System.out.println("Exception  -> " + e.toString());
-            return null;
+            return "index";
         }
     }
 
     /**
      * faz logout do Usuário
+     *
+     * @return
      */
     public String fazerLogout() {
         return "fazerLogout";
@@ -121,12 +103,12 @@ public class UsuarioBean implements Serializable {
         this.email = email;
     }
 
-    public String getSiape() {
-        return siape;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setSiape(String siape) {
-        this.siape = siape;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public String getNome() {

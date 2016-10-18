@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -12,7 +12,7 @@
                 <p:tab title="Meu Perfil">
                     <!-- Conteudo -->
                     <h:form>
-                        <h2>Coodernação De Disciplina</h2>
+                        <h2>CoodernaÃ§Ã£o De Disciplina</h2>
                         <p:outputLabel value="Nome: " />
                         <p:inputText value="#{usuarioBean.nome}"
                                      requiredMessage="Informe o seu email" required="true" />
@@ -24,11 +24,11 @@
                         <br />
                         <br />
                         <p:outputLabel value="Senha: " />
-                        <p:inputText value="#{usuarioBean.siape}"
+                        <p:inputText value="#{usuarioBean.senha}"
                                      requiredMessage="Informe o seu email" required="true" />
                         <br />
                         <br />
-                        <p:commandButton value="Salvar alterações" icon="ui-icon-star"
+                        <p:commandButton value="Salvar alteraÃ§Ãµes" icon="ui-icon-star"
                                          action="#{usuarioBean.editarUsuario}" ajax="false" />
                         <p:commandButton value="Cancelar" icon="ui-icon-star" ajax="false" />
                     </h:form>
@@ -36,7 +36,7 @@
                 <p:tab title="Sala de Cadastros">
                     <!-- Conteudo -->
                     <h:outputLink value="cadastrarUsuario.xhtml">
-                        <h:outputText value="Cadastrar Novo Usuário" />
+                        <h:outputText value="Cadastrar Novo UsuÃ¡rio" />
                     </h:outputLink>
                     <br />
                     <br />
@@ -49,7 +49,7 @@
                         <!-- Conteudo -->
                     </h:panelGrid>
                 </p:tab>
-                <p:tab title="Sala de Horários">
+                <p:tab title="Sala de HorÃ¡rios">
                     <h:panelGrid columns="2" cellpadding="10">
                         <!-- Conteudo -->
                     </h:panelGrid>

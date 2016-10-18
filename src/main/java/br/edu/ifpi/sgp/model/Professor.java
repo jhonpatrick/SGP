@@ -21,32 +21,33 @@ import javax.persistence.Table;
  */
 //@Entity
 //@Table(name="Professor")
-public class Professor implements Serializable{
-	
-	private static final long serialVersionUID = 1L;
-	private long idProfessor ;
+public class Professor implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    private long idProfessor;
     private String nome;
     private DisponibilidadeHorario disponibilidade;
     private List<Materia> materias;
 
-    public Professor() {}
+    public Professor() {
+    }
 
     public Professor(String nome, List<Materia> materias, DisponibilidadeHorario disponibilidade) {
-		this.nome = nome;
-		this.disponibilidade = disponibilidade;
-		this.materias = materias;
-	}
+        this.nome = nome;
+        this.disponibilidade = disponibilidade;
+        this.materias = materias;
+    }
 
-	public Professor(long idProfessor, String nome, DisponibilidadeHorario disponibilidade, List<Materia> materias) {
-		this.idProfessor = idProfessor;
-		this.nome = nome;
-		this.disponibilidade = disponibilidade;
-	}
+    public Professor(long idProfessor, String nome, DisponibilidadeHorario disponibilidade, List<Materia> materias) {
+        this.idProfessor = idProfessor;
+        this.nome = nome;
+        this.disponibilidade = disponibilidade;
+    }
 
 //	@Id
 //	@GeneratedValue(strategy=GenerationType.IDENTITY)
 //	@Column(name="idProfessor")
-	public long getIdProfessor() {
+    public long getIdProfessor() {
         return idProfessor;
     }
 

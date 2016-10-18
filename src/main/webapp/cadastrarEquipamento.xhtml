@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -12,7 +13,7 @@
                 <h:dataTable value="#{equipamentoBean.listaDeEquipamentos}" var="equipamento" border="1" style="text-align:center;">
                     <h:column>		
                         <f:facet name="header">ID</f:facet>
-                            #{equipamento.id}
+                            #{equipamento.idEquipamento}
                     </h:column>
                     <h:column>		
                         <f:facet name="header">Nome</f:facet>
@@ -26,7 +27,7 @@
                         <f:facet name="header">Excluir</f:facet>
                         <h:form id="equipamentoRemoverForm">
                             <h:commandButton value="Excluir" action="#{equipamentoBean.removerEquipamento}">
-                                <f:param name="equipamento" value="#{equipamento.id}"/>
+                                <f:param name="equipamento" value="#{equipamento.idEquipamento}"/>
                             </h:commandButton>
                             <h:message for="equipamentoRemoverForm"></h:message>
                         </h:form>

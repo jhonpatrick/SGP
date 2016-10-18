@@ -1,4 +1,4 @@
-package br.edu.ifpi.sgp.model.entity;
+package br.edu.ifpi.sgp.model;
 
 import java.io.Serializable;
 
@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
@@ -18,26 +17,26 @@ public class Usuario implements Serializable {
     private long idUsuario;
     private String nome;
     private String email;
-    private String siape;
+    private String senha;
     private boolean status = true;
 
     public Usuario() {
     }
 
-    public Usuario(long idUsuario, String nome, String email, String siape, boolean status) {
+    public Usuario(long idUsuario, String nome, String email, String senha, boolean status) {
         super();
         this.idUsuario = idUsuario;
         this.nome = nome;
         this.email = email;
-        this.siape = siape;
+        this.senha = senha;
         this.status = status;
     }
 
-    public Usuario(String nome, String email, String siape, boolean status) {
+    public Usuario(String nome, String email, String senha, boolean status) {
         super();
         this.nome = nome;
         this.email = email;
-        this.siape = siape;
+        this.senha = senha;
         this.status = status;
     }
 
@@ -52,7 +51,7 @@ public class Usuario implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    @Column(name = "nome")
+    @Column(name = "nome", nullable = false, length = 255)
     public String getNome() {
         return nome;
     }
@@ -61,13 +60,13 @@ public class Usuario implements Serializable {
         this.nome = nome;
     }
 
-    @Column(name = "siape", nullable = false, unique = false)
-    public String getSiape() {
-        return siape;
+    @Column(name = "senha", nullable = false, unique = false)
+    public String getSenha() {
+        return senha;
     }
 
-    public void setSiape(String siape) {
-        this.siape = siape;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     @Column(name = "status")
@@ -79,7 +78,7 @@ public class Usuario implements Serializable {
         this.status = status;
     }
 
-    @Column(name = "email", nullable = false, unique = true)
+    @Column(name = "email", nullable = false, unique = true, length = 255)
     public String getEmail() {
         return email;
     }

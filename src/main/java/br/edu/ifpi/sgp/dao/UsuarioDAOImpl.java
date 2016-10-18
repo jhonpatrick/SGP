@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import br.edu.ifpi.sgp.model.entity.Usuario;
+import br.edu.ifpi.sgp.model.Usuario;
 
 /**
  * @author Patrick
@@ -17,23 +17,21 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     @Override
     public void adicionarUsuario(Usuario usuario) {
         try {
-            entityManager = JPAConexao.getEntityManager();
+            entityManager = JPAUtil.getManager();
             entityManager.getTransaction().begin();
             entityManager.persist(usuario);
             entityManager.getTransaction().commit();
         } catch (Exception ex) {
             entityManager.getTransaction().rollback();
         } finally {
-            if (JPAConexao.isEntityManagerOpen()) {
-                JPAConexao.closeEntityManager();
-            }
+            JPAUtil.close();
         }
     }
 
     @Override
     public void excluirUsuario(Usuario usuario) {
         try {
-            entityManager = JPAConexao.getEntityManager();
+            entityManager = JPAUtil.getManager();
             entityManager.getTransaction().begin();
             Usuario aSerApagado = buscarUsuarioPorId(usuario.getIdUsuario());
             entityManager.remove(aSerApagado);
@@ -41,9 +39,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         } catch (Exception ex) {
             entityManager.getTransaction().rollback();
         } finally {
-            if (JPAConexao.isEntityManagerOpen()) {
-                JPAConexao.closeEntityManager();
-            }
+            JPAUtil.close();
         }
     }
 
@@ -58,20 +54,15 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     }
 
     @Override
-    public Usuario buscarUsuarioNomeSenha(String email, String siape) {
+    public Usuario buscarUsuarioNomeSenha(String email, String senha) {
         try {
-            entityManager.getTransaction().begin();
             Usuario usuario = (Usuario) entityManager
-                    .createQuery("SELECT u from Usuario u where u.email = :email and u.siape = :siape")
-                    .setParameter("email", email).setParameter("siape", siape).getSingleResult();
+                    .createQuery("SELECT u from Usuario u where u.email = :email and u.senha = :senha")
+                    .setParameter("email", email).setParameter("senha", senha).getSingleResult();
             return usuario;
         } catch (Exception e) {
             System.out.println("erro -> " + e.toString());
             return null;
-        } finally {
-            if (JPAConexao.isEntityManagerOpen()) {
-                JPAConexao.closeEntityManager();
-            }
         }
     }
 
@@ -83,20 +74,5 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     @Override
     public List<Usuario> pesquisarUsuario(String nome) {
         return null;
-    }
-
-    @Override
-    public Long contador() {
-        try {
-            entityManager.getTransaction().begin();
-            Long count = entityManager.createQuery("select count(*) from Usuario u", Long.class).getSingleResult();
-            return count;
-        } catch (Exception e) {
-            return null;
-        } finally {
-            if (JPAConexao.isEntityManagerOpen()) {
-                JPAConexao.closeEntityManager();
-            }
-        }
     }
 }
