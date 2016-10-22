@@ -1,7 +1,65 @@
 .formCorpo{
-	width: 50%;
-	border: 1px;
-	text-align: justify;
-	text-shadow: green;
-	
+    width: 50%;
+    border: 1px;
+    text-align: justify;
+    text-shadow: green;
+}
+.top-bar {
+    position: fixed;
+    width: 100%;
+    height: 10em;
+    top: 0;
+    left: 0;
+    /*border: 1px solid black;*/
+
+}
+.top-bar .logo{
+    width: 30em;
+    height: 10em;
+    display: inline-block;
+    /*border: 1px solid blue;*/
+    background-image: url(../img/ifpi_cabecalho.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+.content-body .content  {
+/*    line-height: 1.75em;
+    margin-top: 0;
+    min-height: 28em;
+    color: #5e605f;
+    padding: 40px 10% 25px;*/
+    /*border: 1px solid green;*/
+}
+.top-bar .centro{
+    /*    height: 10em;*/
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, sans-serif;
+    display: inline-block;
+    /*border: 1px solid red;*/
+    text-align: center;
+    /*    top: 0;*/
+    /*    margin: 0em 2em 2em 2em;*/
+
+}
+.rodape{
+    text-align: center;
+    border-top: solid 1px #AAA;
+    text-align: right;
+    margin-top: 2em;
+
+}
+.rodape p{
+    font-size: 1em;
+    text-transform: uppercase;
+    margin-right: 1em;
+    margin-top: 1em;
+}
+#content{
+    /*border: 1px solid green;*/
+    padding: 15em 35em 10em
+}
+#content #usuarioForm{
+    /*border: 1px solid blueviolet;*/
+    
 }

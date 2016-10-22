@@ -5,30 +5,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
-
     <ui:composition template="/template/layout.xhtml">
         <ui:define name="content">
             <div class="formCorpo" align="center">
                 <h:outputLabel>Cadastrar Usuário</h:outputLabel>
                 <br /> <br />
-                <h:form id="usuarioForm">
+                <h:form id="usuarioForm" class="form-horizontal">
                     <h:outputText value="Nome: " />
-                    <h:inputText value="#{usuarioBean.nome}" />
+                    <h:inputText value="#{usuarioBean.nome}" class="form-group"/>
                     <br />
                     <br />
                     <h:outputText value="Email: " />
-                    <h:inputText value="#{usuarioBean.email}" />
+                    <h:inputText value="#{usuarioBean.email}" class="form-group"/>
                     <br />
                     <br />
                     <h:outputText value="Senha: " />
-                    <h:inputText value="#{usuarioBean.senha}" />
+                    <h:inputText value="#{usuarioBean.senha}" class="form-group"/>
                     <br />
                     <br />
                     <h:commandButton value="Cadastrar"
-                                     action="#{usuarioBean.adicionarUsuario}" />
+                                     action="#{usuarioBean.adicionarUsuario}" class="btn-default"/>
+
+                    <h:messages for="usuarioForm"></h:messages>
                 </h:form>
-                <h:messages for="usuarioForm"></h:messages>
                 <br />
+
+
+                </form>
             </div>
         </ui:define>
     </ui:composition>

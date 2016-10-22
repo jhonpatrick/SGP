@@ -6,27 +6,30 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
-
+    <div>
     <ui:composition template="/template/layout.xhtml">
         <ui:define name="content">
-            <h:form id="usuarioForm">
+            <h:form id="usuarioForm" class="form-horizontal">
                 <p:growl id="msgs" showDetail="true" />
                 <p:fieldset legend="Faça seu Login">
                     <h:panelGrid columns="2" cellpadding="4">
                         <p:outputLabel value="Login: " />
                         <p:inputText value="#{usuarioBean.email}"
                                      requiredMessage="Informe o seu email" required="true"
-                                     placeholder="Digite seu email" />
+                                     placeholder="Digite seu email" class="form-group form-control col-sm-10"/>
                         <p:outputLabel value="Senha: " />
                         <p:inputText value="#{usuarioBean.senha}"
                                      requiredMessage="Informe o sua senha" rendered="true"
-                                     placeholder="Digite sua senha" />
+                                     placeholder="Digite sua senha" class="form-group form-control col-sm-10"/>
                         <p:commandButton value="Enviar" icon="ui-icon-star"
                                          action="#{usuarioBean.fazerLogin}" ajax="false" />
                     </h:panelGrid>
+                    
                 </p:fieldset>
                 <h:messages for="usuarioForm"></h:messages>
             </h:form>
         </ui:define>
     </ui:composition>
+        </div>
+    <!--style="max-width: 25em; margin: 0 auto;"-->
 </html>
