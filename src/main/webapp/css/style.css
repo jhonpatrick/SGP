@@ -1,9 +1,3 @@
-.formCorpo{
-    width: 50%;
-    border: 1px;
-    text-align: justify;
-    text-shadow: green;
-}
 .top-bar {
     position: fixed;
     width: 100%;
@@ -25,11 +19,11 @@
 
 }
 .content-body .content  {
-/*    line-height: 1.75em;
-    margin-top: 0;
-    min-height: 28em;
-    color: #5e605f;
-    padding: 40px 10% 25px;*/
+    /*    line-height: 1.75em;
+        margin-top: 0;
+        min-height: 28em;
+        color: #5e605f;
+        padding: 40px 10% 25px;*/
     /*border: 1px solid green;*/
 }
 .top-bar .centro{
@@ -55,11 +49,28 @@
     margin-right: 1em;
     margin-top: 1em;
 }
+/*.content{
+    border: 1px solid red;
+}*/
 #content{
+    margin-top: 10em;
     /*border: 1px solid green;*/
-    padding: 15em 35em 10em
+    /*padding: 10em 35em 5em;*/
+
 }
 #content #usuarioForm{
+    margin-top: 10em;
     /*border: 1px solid blueviolet;*/
+    padding: 10em 35em 5em 35em;
+}
+#content #cadastroForm{
+    /*border: 1px solid blueviolet;*/
+    padding: 7em 28em 5em;
+}
+#cadastroForm h3{
+    font-family: "Roboto", sans-serif;
+    font-size: 2.4em;
+    margin-bottom: 0.8em;
+    text-align: center;
     
 }

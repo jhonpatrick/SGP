@@ -7,31 +7,25 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <ui:composition template="/template/layout.xhtml">
         <ui:define name="content">
-            <div class="formCorpo" align="center">
-                <h:outputLabel>Cadastrar Usuário</h:outputLabel>
-                <br /> <br />
-                <h:form id="usuarioForm" class="form-horizontal">
-                    <h:outputText value="Nome: " />
-                    <h:inputText value="#{usuarioBean.nome}" class="form-group"/>
-                    <br />
-                    <br />
-                    <h:outputText value="Email: " />
-                    <h:inputText value="#{usuarioBean.email}" class="form-group"/>
-                    <br />
-                    <br />
-                    <h:outputText value="Senha: " />
-                    <h:inputText value="#{usuarioBean.senha}" class="form-group"/>
-                    <br />
-                    <br />
-                    <h:commandButton value="Cadastrar"
-                                     action="#{usuarioBean.adicionarUsuario}" class="btn-default"/>
-
-                    <h:messages for="usuarioForm"></h:messages>
-                </h:form>
-                <br />
-
-
-                </form>
+            <div id="cadastroForm" class="form-horizontal">
+                <h3>Cadastrar Usuário</h3>
+                <label class="col-sm-2 control-label">Nome</label>
+                <div class="col-sm-10 form-group">
+                    <input value="#{usuarioBean.nome}" type="text" class="form-control" placeholder="Nome"></input>
+                </div>
+                <label for="inputPassword3" class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-10 form-group">
+                    <input value="#{usuarioBean.email}" type="email" class="form-control" placeholder="Email"></input>
+                </div>
+                <label class="col-sm-2 control-label">Senha</label>
+                <div class="col-sm-10 form-group">
+                    <input value="#{usuarioBean.senha}" type="password" class="form-control" placeholder="Senha"></input>
+                </div>
+                <div class="col-sm-offset-2">
+                <h:commandButton value="Cadastrar"
+                                 action="#{usuarioBean.adicionarUsuario}" class="btn btn-primary btn-lg"/>
+                <h:messages for="usuarioForm"></h:messages>
+                </div>
             </div>
         </ui:define>
     </ui:composition>
